@@ -17,7 +17,7 @@ const DEMO_STAGES = [
 ]
 
 const EXTRACTED_FIELDS = [
-  { field: 'Name',          value: 'Mahrez Ouarbi',              delay: 0.8 },
+  { field: 'Name',          value: 'Mahrez Ourabi',              delay: 0.8 },
   { field: 'Experience',    value: '3+ years Full-Stack',        delay: 1.0 },
   { field: 'Skills',        value: 'Next.js, Spring Boot, AI',   delay: 1.2 },
   { field: 'Education',     value: 'Eng. Degree – Tek-Up',       delay: 1.4 },

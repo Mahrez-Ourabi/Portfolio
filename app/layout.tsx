@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Mahrez Ouarbi – Full-Stack Engineer & AI Specialist',
+  title: 'Mahrez Ourabi – Full-Stack Engineer & AI Specialist',
   description:
-    'Portfolio of Mahrez Ouarbi, a Full-Stack Software Engineer and AI Enthusiast based in Germany. Expert in Next.js, Spring Boot, Python, and AI/ML systems.',
+    'Portfolio of Mahrez Ourabi, a Full-Stack Software Engineer and AI Enthusiast based in Germany. Expert in Next.js, Spring Boot, Python, and AI/ML systems.',
   keywords: ['Full-Stack Developer', 'AI Engineer', 'Next.js', 'React', 'Spring Boot', 'TypeScript'],
-  authors: [{ name: 'Mahrez Ouarbi' }],
+  authors: [{ name: 'Mahrez Ourabi' }],
   openGraph: {
-    title: 'Mahrez Ouarbi – Full-Stack Engineer & AI Specialist',
+    title: 'Mahrez Ourabi – Full-Stack Engineer & AI Specialist',
     description: 'Building intelligent, scalable, and beautiful web applications.',
     type: 'website',
   },

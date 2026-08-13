@@ -65,7 +65,7 @@ export default function About({ locale }: AboutProps) {
                 <div className="relative w-full h-full rounded-3xl overflow-hidden glass border border-cyan/20">
                   <img
                     src="/images/profile-mahrez.png"
-                    alt="Mahrez Ouarbi"
+                    alt="Mahrez Ourabi"
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       ;(e.target as HTMLImageElement).src = '/placeholder-user.jpg'

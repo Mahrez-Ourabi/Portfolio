@@ -29,7 +29,7 @@ export default function Footer({ locale }: FooterProps) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          © {year} Mahrez Ouarbi. {t.rights}
+          © {year} Mahrez Ourabi. {t.rights}
         </motion.p>
         <motion.a
           href="#"

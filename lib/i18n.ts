@@ -11,7 +11,7 @@ export const translations = {
     },
     hero: {
       greeting: 'Hello, I\'m',
-      name: 'Mahrez Ouarbi',
+      name: 'Mahrez Ourabi',
       role1: 'Full-Stack Engineer',
       role2: 'AI Specialist',
       role3: 'Product Builder',
@@ -103,7 +103,7 @@ export const translations = {
     },
     hero: {
       greeting: 'Bonjour, je suis',
-      name: 'Mahrez Ouarbi',
+      name: 'Mahrez Ourabi',
       role1: 'Ingénieur Full-Stack',
       role2: 'Spécialiste IA',
       role3: 'Créateur de Produits',
