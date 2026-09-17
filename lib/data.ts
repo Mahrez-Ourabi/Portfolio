@@ -441,7 +441,7 @@ export const education = [
     type: 'engineering',
   },
   {
-    degree: 'Diploma in CS Applied to Management',
+    degree: "Bachelor's Diploma in Computer Science Applied to Management",
     school: 'Faculty of Economics & Management, Nabeul',
     location: 'Nabeul, Tunisia',
     period: '2019 – Aug 2022',
