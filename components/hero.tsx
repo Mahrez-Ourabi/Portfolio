@@ -116,7 +116,7 @@ export default function Hero({ locale }: HeroProps) {
             <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform" />
           </motion.button>
           <motion.a
-            href="/CV_IT_EN_Mahrez_ourabi.pdf"
+            href="/Mahrez Ourabi Full-Stack Engineer CV.pdf"
             download
             className="flex items-center gap-2 px-8 py-4 rounded-full border border-border hover:border-cyan text-sm font-bold transition-all glass"
             whileHover={{ scale: 1.05, y: -2 }}
