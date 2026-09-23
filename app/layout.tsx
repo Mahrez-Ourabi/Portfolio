@@ -17,7 +17,11 @@ export const metadata: Metadata = {
   title: 'Mahrez Ourabi – Full-Stack Engineer & AI Specialist',
   description:
     'Portfolio of Mahrez Ourabi, a Full-Stack Software Engineer and AI Enthusiast based in Germany. Expert in Next.js, Spring Boot, Python, and AI/ML systems.',
-  keywords: ['Full-Stack Developer', 'AI Engineer', 'Next.js', 'React', 'Spring Boot', 'TypeScript'],
+    icons: {
+      icon: '/public/profile-logo.png',
+      apple: '/public/profile-logo.png',
+    },
+    keywords: ['Full-Stack Developer', 'AI Engineer', 'Next.js', 'React', 'Spring Boot', 'TypeScript'],
   authors: [{ name: 'Mahrez Ourabi' }],
   openGraph: {
     title: 'Mahrez Ourabi – Full-Stack Engineer & AI Specialist',
