@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   description:
     'Portfolio of Mahrez Ourabi, a Full-Stack Software Engineer and AI Enthusiast based in Germany. Expert in Next.js, Spring Boot, Python, and AI/ML systems.',
     icons: {
-      icon: '/public/profile-logo.png',
-      apple: '/public/profile-logo.png',
+      icon: '/logo.png',
+      apple: '/logo.png',
     },
     keywords: ['Full-Stack Developer', 'AI Engineer', 'Next.js', 'React', 'Spring Boot', 'TypeScript'],
   authors: [{ name: 'Mahrez Ourabi' }],

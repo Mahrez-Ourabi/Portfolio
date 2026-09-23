@@ -1,9 +1,11 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { Sun, Moon, Menu, X, Globe } from 'lucide-react'
+
 import type { Locale } from '@/lib/i18n'
 import { translations } from '@/lib/i18n'
 
@@ -12,18 +14,30 @@ interface NavbarProps {
   onLocaleChange: (l: Locale) => void
 }
 
-export default function Navbar({ locale, onLocaleChange }: NavbarProps) {
+export default function Navbar({
+  locale,
+  onLocaleChange,
+}: NavbarProps) {
   const { theme, setTheme } = useTheme()
+
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+
   const t = translations[locale].nav
 
   useEffect(() => {
     setMounted(true)
-    const onScroll = () => setScrolled(window.scrollY > 40)
+
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40)
+    }
+
     window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   const links = [
@@ -36,109 +50,316 @@ export default function Navbar({ locale, onLocaleChange }: NavbarProps) {
 
   const scrollTo = (href: string) => {
     setMobileOpen(false)
+
     const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+
+    if (el) {
+      el.scrollIntoView({
+        behavior: 'smooth',
+      })
+    }
   }
 
   return (
     <>
+      {/* =========================
+          NAVBAR
+      ========================== */}
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{
+          duration: 0.6,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'glass py-3' : 'py-5 bg-transparent'
+          scrolled
+            ? 'glass py-3'
+            : 'py-5 bg-transparent'
         }`}
       >
         <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
+
+          {/* =========================
+              PERSONAL LOGO
+          ========================== */}
           <motion.a
             href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-            className="font-mono text-sm font-bold tracking-widest uppercase text-cyan"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
+            onClick={(e) => {
+              e.preventDefault()
+
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              })
+            }}
+            aria-label="Go to homepage"
+            className="
+              relative
+              flex
+              items-center
+              justify-center
+              w-10
+              h-10
+              rounded-full
+              overflow-hidden
+              border
+              border-cyan/30
+              bg-[#050914]
+              shadow-[0_0_18px_rgba(0,220,255,0.18)]
+              transition-all
+              duration-300
+            "
+            whileHover={{
+              scale: 1.08,
+              boxShadow:
+                '0 0 28px rgba(0,220,255,0.35)',
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
           >
-            MO
+            <Image
+              src="/profile-logo.png"
+              alt="Mahrez Ourabi"
+              width={40}
+              height={40}
+              priority
+              className="
+                w-full
+                h-full
+                object-cover
+                scale-[1.03]
+              "
+            />
+
+            {/* Subtle blue glow */}
+            <span
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                rounded-full
+                bg-cyan/5
+                mix-blend-screen
+              "
+            />
           </motion.a>
 
-          {/* Desktop links */}
+          {/* =========================
+              DESKTOP LINKS
+          ========================== */}
           <ul className="hidden md:flex items-center gap-8">
             {links.map((link, i) => (
               <motion.li
                 key={link.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * i + 0.3 }}
+                initial={{
+                  opacity: 0,
+                  y: -10,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.1 * i + 0.3,
+                }}
               >
                 <button
                   onClick={() => scrollTo(link.href)}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+                  className="
+                    text-sm
+                    font-medium
+                    text-muted-foreground
+                    hover:text-foreground
+                    transition-colors
+                    relative
+                    group
+                  "
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyan group-hover:w-full transition-all duration-300" />
+
+                  <span
+                    className="
+                      absolute
+                      -bottom-1
+                      left-0
+                      w-0
+                      h-px
+                      bg-cyan
+                      group-hover:w-full
+                      transition-all
+                      duration-300
+                    "
+                  />
                 </button>
               </motion.li>
             ))}
           </ul>
 
-          {/* Controls */}
+          {/* =========================
+              CONTROLS
+          ========================== */}
           <div className="flex items-center gap-3">
+
             {/* Language toggle */}
             <motion.button
-              onClick={() => onLocaleChange(locale === 'en' ? 'fr' : 'en')}
-              className="flex items-center gap-1.5 text-xs font-mono font-bold px-3 py-1.5 rounded-full border border-border hover:border-cyan hover:text-cyan transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              onClick={() =>
+                onLocaleChange(
+                  locale === 'en' ? 'fr' : 'en'
+                )
+              }
+              className="
+                flex
+                items-center
+                gap-1.5
+                text-xs
+                font-mono
+                font-bold
+                px-3
+                py-1.5
+                rounded-full
+                border
+                border-border
+                hover:border-cyan
+                hover:text-cyan
+                transition-all
+              "
+              whileHover={{
+                scale: 1.05,
+              }}
+              whileTap={{
+                scale: 0.95,
+              }}
               title="Switch language"
             >
               <Globe size={12} />
+
               {locale.toUpperCase()}
             </motion.button>
 
             {/* Theme toggle */}
             {mounted && (
               <motion.button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-full border border-border hover:border-cyan hover:text-cyan transition-all"
-                whileHover={{ scale: 1.1, rotate: 15 }}
-                whileTap={{ scale: 0.9 }}
+                onClick={() =>
+                  setTheme(
+                    theme === 'dark'
+                      ? 'light'
+                      : 'dark'
+                  )
+                }
+                className="
+                  p-2
+                  rounded-full
+                  border
+                  border-border
+                  hover:border-cyan
+                  hover:text-cyan
+                  transition-all
+                "
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 15,
+                }}
+                whileTap={{
+                  scale: 0.9,
+                }}
                 aria-label="Toggle theme"
               >
-                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                {theme === 'dark' ? (
+                  <Sun size={16} />
+                ) : (
+                  <Moon size={16} />
+                )}
               </motion.button>
             )}
 
             {/* Mobile menu toggle */}
             <button
-              className="md:hidden p-2 rounded-full border border-border hover:border-cyan transition-all"
-              onClick={() => setMobileOpen(!mobileOpen)}
+              className="
+                md:hidden
+                p-2
+                rounded-full
+                border
+                border-border
+                hover:border-cyan
+                transition-all
+              "
+              onClick={() =>
+                setMobileOpen(!mobileOpen)
+              }
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <X size={16} /> : <Menu size={16} />}
+              {mobileOpen ? (
+                <X size={16} />
+              ) : (
+                <Menu size={16} />
+              )}
             </button>
           </div>
         </nav>
       </motion.header>
 
-      {/* Mobile menu */}
+      {/* =========================
+          MOBILE MENU
+      ========================== */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 glass flex flex-col items-center justify-center gap-8 md:hidden"
+            initial={{
+              opacity: 0,
+              x: '100%',
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            exit={{
+              opacity: 0,
+              x: '100%',
+            }}
+            transition={{
+              type: 'spring',
+              damping: 25,
+              stiffness: 200,
+            }}
+            className="
+              fixed
+              inset-0
+              z-40
+              glass
+              flex
+              flex-col
+              items-center
+              justify-center
+              gap-8
+              md:hidden
+            "
           >
             {links.map((link, i) => (
               <motion.button
                 key={link.href}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.05 * i }}
-                onClick={() => scrollTo(link.href)}
-                className="text-2xl font-bold hover:text-cyan transition-colors"
+                initial={{
+                  opacity: 0,
+                  x: 40,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  delay: 0.05 * i,
+                }}
+                onClick={() =>
+                  scrollTo(link.href)
+                }
+                className="
+                  text-2xl
+                  font-bold
+                  hover:text-cyan
+                  transition-colors
+                "
               >
                 {link.label}
               </motion.button>
