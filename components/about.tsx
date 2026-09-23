@@ -64,7 +64,7 @@ export default function About({ locale }: AboutProps) {
                 <div className="absolute inset-0 rounded-3xl bg-cyan/20 blur-2xl" />
                 <div className="relative w-full h-full rounded-3xl overflow-hidden glass border border-cyan/20">
                   <img
-                    src="/images/profile-mahrez.png"
+                    src="/images/profile-mahrez.jpeg"
                     alt="Mahrez Ourabi"
                     className="w-full h-full object-cover"
                     onError={(e) => {
